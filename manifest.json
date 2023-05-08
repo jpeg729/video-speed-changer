@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+    "name": "Video Speed Changer",
+    "version": "1.0",
+    "description": "A Chrome extension that adds keyboard shortcuts to speed up and slow down video playback.",
+    "icons": {
+        "128":"Icon.png"
+    },
+    "permissions": [],
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "all_frames": true,
+            "runAt": "document_start",
+            "js": [
+                "frame.js"
+            ]
+        }
+    ]
+}
