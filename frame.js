@@ -1,12 +1,17 @@
+let oldTitle = null;
 
 function handleKeydown(key) {
     let videos = Array.from(document.getElementsByTagName('video'));
     let stop = false;
+    if (!oldTitle) oldTitle = window.top.document.title;
     switch (key) {
         case ']':
             for (var video of videos) {
                 if (!video.paused) {
                     video.playbackRate *= 1.1;
+                    window.top.document.title = video.playbackRate.toString();
+                    setTimeout(() => window.top.document.title = oldTitle, 300);
+                    console.log(video.playbackRate);
                     stop = true;
                 }
             }
@@ -15,6 +20,9 @@ function handleKeydown(key) {
             for (var video of videos) {
                 if (!video.paused) {
                     video.playbackRate /= 1.1;
+                    window.top.document.title = video.playbackRate.toString();
+                    setTimeout(() => window.top.document.title = oldTitle, 300);
+                    console.log(video.playbackRate);
                     stop = true;
                 }
             }
@@ -23,6 +31,9 @@ function handleKeydown(key) {
             for (var video of videos) {
                 if (!video.paused) {
                     video.playbackRate = 1;
+                    window.top.document.title = video.playbackRate.toString();
+                    setTimeout(() => window.top.document.title = oldTitle, 300);
+                    console.log(video.playbackRate);
                     stop = true;
                 }
             }
